@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+background-color: #0e1b4d;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 2px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+    th {
+      background-color: #0e1b4d;
+padding: 30px;
+font-size: 130%;
+color: white;
+    }
+    button {
+background-color: #4770db;
+      font-size: 120%;
+      width: 100%;
+height: 80px; 
+      padding: 5px 10px;
+      cursor: pointer;
+color: white;
+    }
+    .nested-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .nested-table td {
+      border: 2px solid #dddddd;
+      padding: 4px;
+    }
+    .full-width-cell {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <table id="dynamic-table">
+    <thead>
+      <tr>
+<th colspan=2><center><h2>See How SleepSanity Compares to Other Sleep Solutions</h2></center></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button onclick="showText(0)">SLEEP MASKS AND BLINDFOLDS</button></td>
+        <td><button onclick="showText(4)">MEDICATION AND SUPPLEMENTS</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="showText(1)">SLEEP SOUND GENERATORS</button></td>
+        <td><button onclick="showText(5)">COLORED SLEEP LIGHTS</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="showText(2)">SLEEP PROGRAMS/ APPS</button></td>
+        <td><button onclick="showText(6)">BLACKOUT CURTAINS</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="showText(3)">SLEEP APNEA DEVICES</button></td>
+        <td><button onclick="showText(7)">PROFESSIONAL SLEEP THERAPIST</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="display-section" style="display: none;">
+    <center><h3 id="button-text"></h3></center>
+    <table id="nested-table" class="nested-table">
+      <tbody id="nested-table-body">
+        <tr>
+          <th class="full-width-cell" id="body-text"></th>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    const buttonData = [
+      { buttonText: "SLEEP MASKS AND BLINDFOLDS", bodyText: "Sleep masks and blindfolds block light but don’t address other key factors that impact sleep duration and quality like light and color. While some sleep masks have speakers, none offer SleepSanity’s integration of color, light, and noise-cancelling technologies with routines that support a healthy circadian rhythm." },
+      { buttonText: "SLEEP SOUND GENERATORS", bodyText: "SleepSanity offers noise-canceling audio with the features of the most sophisticated headset or bedside sound-generators, including alarm functions, snoring protection, and tinnitus masking. It provides unlimited access to audio tracks for winding down and waking up. SleepSanity integrates light-canceling and color technology to enhance the transition in to and out of the sleep state." },
+      { buttonText: "SLEEP PROGRAMS/ APPS", bodyText: "Sleep trackers and meditation/relaxation apps aid in establishing routines and understanding individual sleep needs. Some include integrated sound generators, complementing the sleep process. They can be used in conjunction with SleepSanity for enhanced results. If your sleep challenges persist with an app, consider trying SleepSanity alone or in combination with your preferred app for 30 days, risk free." },
+      { buttonText: "SLEEP APNEA DEVICES", bodyText: "Sleep apnea devices, like CPAP and BiPAP machines, keep the airway open during sleep, reducing symptoms like snoring and fatigue. They&#39;re prescribed by healthcare professionals based on individual needs and can greatly improve sleep quality and overall health for those with sleep apnea. SleepSanity is not an alternative to sleep apnea devices and cannot be used at the same time as a sleep apnea device." },
+      { buttonText: "MEDICATION AND SUPPLEMENTS", bodyText: "Sleep medication, including prescriptions, supplements like CBD gummies, or melatonin, are expensive, may cause drowsiness, disrupt a heathy sleep-wake cycle and have other health drawbacks. They are costlier over time. Consulting a healthcare professional is crucial if considering or using any sleep medication, ensuring informed decisions and exploring alternatives." },
+      { buttonText: "COLORED SLEEP LIGHTS", bodyText: "Specific wave lengths of color help to regulate circadian rhythm: blue for wakefulness, red/orange for relaxation and better sleep. SleepSanity does more by integrating color, light/darkness, and sound into coordinated routines to establish and sustain natural sleep-wake cycles, enhancing overall sleep quality and well-being." },
+      { buttonText: "BLACKOUT CURTAINS", bodyText: "Blackout curtains improve sleep by blocking external light, promoting melatonin production for restful sleep. They do not address distracting ambient light in the room which may come from TV, phone or other device LED’s. Curtains don’t introduce the custom sunset or sunrise experience or have sleep routines that deliver personalized options that address sound that impacts sleep--like your partner snoring, listening to music or talking on the phone." },
+      { buttonText: "PROFESSIONAL SLEEP THERAPIST", bodyText: "Working with a professional sleep therapist can significantly improve sleep quality and address sleep-related issues through evidence-based techniques like Cognitive Behavioral Therapy for Insomnia (CBT-I). While personalized treatment plans may or may not include sleep aids, therapists help individuals develop healthy sleep habits and coping strategies. SleepSanity may complement therapy but is not a substitute for personalized care from a sleep therapist." }
+    ];
+
+    function showText(index) {
+      document.getElementById("button-text").textContent = buttonData[index].buttonText;
+      document.getElementById("body-text").innerHTML = buttonData[index].bodyText;
+      document.getElementById("dynamic-table").style.display = "none";
+      document.getElementById("display-section").style.display = "block";
+    }
+
+    function goBack() {
+      document.getElementById("dynamic-table").style.display = "table";
+      document.getElementById("display-section").style.display = "none";
+    }
+  </script>
+</body>
+</html>
